@@ -14,10 +14,10 @@ public:
         right = nullptr;
     }
     ~BSTNode(){}
-    int childrenCout(){
+    int childrenCount(){
         return (left == nullptr? 0 : 1) + (right == nullptr? 0 : 1);
     }
-    BSTNode<E> *getUniqueChil(){
+    BSTNode<E> *getUniqueChild(){
         return left == nullptr?  right : left;
     }
 
