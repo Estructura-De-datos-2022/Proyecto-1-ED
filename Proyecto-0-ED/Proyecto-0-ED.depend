@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1652209485 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<cstdio>
+
