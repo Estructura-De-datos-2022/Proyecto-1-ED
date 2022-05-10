@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <windows.h>
 using namespace std;
 
 /*
@@ -7,6 +8,9 @@ https://parzibyte.me/blog
 */
 
 int main() {
+    setlocale(LC_ALL,"spanish");
+    SetConsoleCP(1252);
+    SetConsoleOutputCP(1252);
     string nombreArchivo = "ignorar.txt";
     ifstream archivo(nombreArchivo.c_str());
     string linea;
