@@ -1,5 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
+#include <string.h>
+#include "Trie.h"
 #include <windows.h>
 using namespace std;
 
@@ -11,15 +14,23 @@ int main() {
     setlocale(LC_ALL,"spanish");
     SetConsoleCP(1252);
     SetConsoleOutputCP(1252);
-    string nombreArchivo = "ignorar.txt";
-    ifstream archivo(nombreArchivo.c_str());
+    Trie ignorar;
+    string archivoIgnorar = "ignorar.txt";
+    //nombreArchivo+=".conf";
+    //cout << nombreArchivo << endl;
+    /*if(nombreArchivo.su)*/
+    ifstream archivoIgn(archivoIgnorar.c_str());
     string linea;
     // Obtener línea de archivo, y almacenar contenido en "linea"
-    while (getline(archivo, linea)) {
+    while (getline(archivoIgn, linea)) {
         // Lo vamos imprimiendo
-        cout << "Una línea: ";
-        cout << linea << endl;
+        ignorar.insert(linea);
+        //cout << "Una línea: ";
+        //cout << linea << endl;
     }
+    //List<string> *palabras = ignorar.getMatches("");
+    //palabras->print();
+
 }
 
 

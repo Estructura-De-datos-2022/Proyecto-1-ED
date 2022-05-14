@@ -57,12 +57,12 @@ private:
           return current;
         }else{
             *result = current->element;
-            if(current->childrenCout() == 0){
+            if(current->childrenCount() == 0){
                 delete current;
                 return nullptr;
             }
-            if(current->childrenCout() == 1){
-                auto child = current->getUniqueChil();
+            if(current->childrenCount() == 1){
+                auto child = current->getUniqueChild();
                 delete current;
                 return child;
             }else{

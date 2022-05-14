@@ -1,6 +1,8 @@
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 
+#include "List.h"
+
 template <typename K, typename V>
 class Dictionary{
 private:

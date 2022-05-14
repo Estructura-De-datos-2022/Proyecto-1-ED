@@ -1,8 +1,50 @@
 # depslib dependency file v1.0
-1652217263 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
+1652565801 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
 	<fstream>
+	<stdlib.h>
+	<string.h>
+	"Trie.h"
 	<windows.h>
 	<cstdlib>
 	<cstdio>
+
+1651792414 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
+	<stdexcept>
+	<iostream>
+	<string>
+	"TrieNode.h"
+
+1651792172 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trienode.h
+	"BSTreeDictionary.h"
+
+1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstreedictionary.h
+	"Dictionary.h"
+	"KVPair.h"
+	"BSTree.h"
+	"DLinkedList.h"
+
+1652412849 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dictionary.h
+	"List.h"
+
+1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\list.h
+
+1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\kvpair.h
+	<iostream>
+
+1652413061 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstree.h
+	<stdexcept>
+	"BSTNode.h"
+	"DLinkedList.h"
+	<iostream>
+
+1652211085 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstnode.h
+
+1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dlinkedlist.h
+	"List.h"
+	"DNode.h"
+	<stdexcept>
+	<iostream>
+
+1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dnode.h
 
