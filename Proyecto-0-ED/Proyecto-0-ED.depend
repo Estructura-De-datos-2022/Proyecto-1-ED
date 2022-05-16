@@ -48,3 +48,60 @@
 
 1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dnode.h
 
+1652660177 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Trie.h"
+	<windows.h>
+	<stdio.h>
+	<sys/stat.h>
+	<cstdlib>
+	<cstdio>
+
+1647761830 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
+	"List.h"
+	<stdexcept>
+	<iostream>
+
+1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\list.h
+
+1651792414 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trie.h
+	<stdexcept>
+	<iostream>
+	<string>
+	"TrieNode.h"
+
+1651792172 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trienode.h
+	"BSTreeDictionary.h"
+
+1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\bstreedictionary.h
+	"Dictionary.h"
+	"KVPair.h"
+	"BSTree.h"
+	"DLinkedList.h"
+
+1652589043 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\dictionary.h
+	"List.h"
+
+1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\kvpair.h
+	<iostream>
+
+1652589043 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\bstree.h
+	<stdexcept>
+	"BSTNode.h"
+	"DLinkedList.h"
+	<iostream>
+
+1652647979 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\bstnode.h
+
+1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\dlinkedlist.h
+	"List.h"
+	"DNode.h"
+	<stdexcept>
+	<iostream>
+
+1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\dnode.h
+
