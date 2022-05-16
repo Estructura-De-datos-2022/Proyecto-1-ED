@@ -49,8 +49,10 @@ public:
         delete root;
     }
     void insert(string word){
-        if(containsWord(word))
-            throw runtime_error("Word already in trie");
+        if(containsWord(word)){
+
+        }
+        else{
         TrieNode *current = root;
         for (unsigned int i = 0; i < word.size(); i++){
             current->prefixCount++;
@@ -60,6 +62,7 @@ public:
         }
         current->prefixCount++;
         current->isFinal = true;
+        }
     }
     bool containsWord(string word){
         TrieNode *current = root;
