@@ -48,22 +48,28 @@ public:
         clear();
         delete root;
     }
-    void insert(string word){
-        if(containsWord(word)){
-
+    void insert(string word,int fileLine){
+        TrieNode *current = root;
+        if(!containsWord(word)){
+            for (unsigned int i = 0; i < word.size(); i++){
+                prefixCount++;
+                if (!current->contains(word[i]))
+                    current->add(word[i]);
+                current = current->getChild(word[i]);
+            }
+            current->prefixCount++;
+            current->isFinal = true;
+            current->lineNumbers.append(fileLine);
         }
         else{
-        TrieNode *current = root;
-        for (unsigned int i = 0; i < word.size(); i++){
-            current->prefixCount++;
-            if (!current->contains(word[i]))
-                current->add(word[i]);
-            current = current->getChild(word[i]);
+            for (unsigned int i = 0; i < word.size(); i++){
+                current = current->getChild(word[i]);
+            }
+            current->lineNumbers.append(fileLine);
         }
-        current->prefixCount++;
-        current->isFinal = true;
-        }
+
     }
+
     bool containsWord(string word){
         TrieNode *current = root;
         for (unsigned int i = 0; i < word.size(); i++){
