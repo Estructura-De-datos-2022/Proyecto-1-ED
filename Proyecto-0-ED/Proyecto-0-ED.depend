@@ -48,8 +48,9 @@
 
 1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dnode.h
 
-1652753672 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
+1652759876 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
+	<algorithm>
 	<fstream>
 	<stdlib.h>
 	<string.h>

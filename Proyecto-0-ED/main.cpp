@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <stdlib.h>
 #include <string.h>
@@ -10,10 +11,16 @@
 using namespace std;
 
 /*
-https://parzibyte.me/blog
+https://replit.com/@parzibyte/LeerArchivoEnC#main.cpp
 https://www.delftstack.com/es/howto/c/c-check-if-file-exists/#:~:text=completa%20del%20archivo.-,stat()%20Funci%C3%B3n%20para%20comprobar%20si%20un%20archivo%20existe%20en,si%20el%20archivo%20no%20existe.&text=El%20programa%20imprimir%C3%A1%20file%20exists%20si%20el%20archivo%20demo.
+https://www.delftstack.com/es/howto/cpp/how-to-convert-string-to-lower-case-in-cpp/
 */
-
+string toLower(string s) {
+    transform(s.begin(), s.end(), s.begin(),
+       [](unsigned char c){ return tolower(c); }
+    );
+    return s;
+}
 int checkIfFileExists(const char* filename){
     struct stat buffer;
     int exist = stat(filename,&buffer);
@@ -26,7 +33,7 @@ int checkIfFileExists(const char* filename){
 bool esFinDePalabra(string fila,int numeroLetra){
     char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?'
-    &&letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='1'
+    &&letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'&& letra!='1'
     && letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
     if(numeroLetra==0){
         return false;
@@ -37,14 +44,14 @@ bool esFinDePalabra(string fila,int numeroLetra){
          letraAnterior!='-' &&letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
          && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
          && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
-         && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
+         && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9'&& letraAnterior!='0');
         return (lastIsLetter && !isLetter);
     }
 }
 bool esPrimerLetra(string fila,int numeroLetra){
     char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'
+    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'
     && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
 
     if(numeroLetra==0){
@@ -58,7 +65,7 @@ bool esPrimerLetra(string fila,int numeroLetra){
     else{
         char letraAnterior=fila[numeroLetra-1];
         bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'&& letraAnterior!='0'
         && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
         && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
         && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
@@ -68,7 +75,7 @@ bool esPrimerLetra(string fila,int numeroLetra){
 bool esLetraIntermedia(string fila,int numeroLetra){
     char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'
+    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'
     && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
     if(numeroLetra==0){
         return false;
@@ -79,7 +86,7 @@ bool esLetraIntermedia(string fila,int numeroLetra){
         letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
         && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
         && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
-        && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
+        && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9'&& letraAnterior!='0');
         return (isLetter && lastIsLetter);
     }
 }
@@ -124,6 +131,7 @@ int main() {
     string lineaArchivoPrincipal;
     while (getline(archivoListaLineas, lineaArchivoPrincipal)){
         listaLineas->append(lineaArchivoPrincipal);
+        lineaArchivoPrincipal=toLower(lineaArchivoPrincipal);
         string currentWord="";
         for(unsigned int i=0;i<lineaArchivoPrincipal.size();i++){
             // si el anterior caracter no es una letra pero este sí
@@ -143,14 +151,14 @@ int main() {
         }
 
     }
-    List<string> * palabras=triePrincipal->getMatches("");
-    palabras->print();
+    //List<string> * palabras=triePrincipal->getMatches("");
+    //palabras->print();
     //nombreArchivo+=".conf";
     //cout << nombreArchivo << endl;
     /*if(nombreArchivo.su)*/
     //List<string> *palabras = ignorar.getMatches("");
     //palabras->print();
-    delete palabras;
+    //delete palabras;
     delete ignorar;
     delete triePrincipal;
     delete listaLineas;
