@@ -48,7 +48,7 @@
 
 1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dnode.h
 
-1652740507 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
+1652753672 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
 	<fstream>
 	<stdlib.h>
@@ -61,20 +61,20 @@
 	<cstdlib>
 	<cstdio>
 
-1652741436 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
+1652748912 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
 	"List.h"
 	<stdexcept>
 	<iostream>
 
 1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\list.h
 
-1652689923 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trie.h
+1652748912 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trie.h
 	<stdexcept>
 	<iostream>
 	<string>
 	"TrieNode.h"
 
-1652730993 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trienode.h
+1652748912 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trienode.h
 	"BSTreeDictionary.h"
 
 1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\bstreedictionary.h

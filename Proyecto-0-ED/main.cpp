@@ -24,23 +24,29 @@ int checkIfFileExists(const char* filename){
 }
 
 bool esFinDePalabra(string fila,int numeroLetra){
-    letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-    letra!='¿' && letra!=':');
+    char letra=fila[numeroLetra];
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?'
+    &&letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='1'
+    && letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
     if(numeroLetra==0){
-        return false
+        return false;
     }
     else{
-        letraAnterior=fila[numeroLetra-1]
-        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':');
+        char letraAnterior=fila[numeroLetra-1];
+        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' &&
+         letraAnterior!='-' &&letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
+         && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
+         && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
+         && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
         return (lastIsLetter && !isLetter);
     }
 }
 bool esPrimerLetra(string fila,int numeroLetra){
-    letra=fila[numeroLetra]
+    char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-    letra!='¿' && letra!=':');
+    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'
+    && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
+
     if(numeroLetra==0){
         if(isLetter){
             return true;
@@ -50,24 +56,31 @@ bool esPrimerLetra(string fila,int numeroLetra){
         }
     }
     else{
-        letraAnterior=fila[numeroLetra-1]
-        lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':');
+        char letraAnterior=fila[numeroLetra-1];
+        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
+        && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
+        && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
+        && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
         return (!lastIsLetter && isLetter);
     }
 }
 bool esLetraIntermedia(string fila,int numeroLetra){
-    letra=fila[numeroLetra]
+    char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-    letra!='¿' && letra!=':');
+    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'
+    && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
     if(numeroLetra==0){
         return false;
     }
     else{
-        letraAnterior=fila[numeroLetra-1]
+        char letraAnterior=fila[numeroLetra-1];
         bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':');
-        return (isLetter && )
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
+        && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
+        && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
+        && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
+        return (isLetter && lastIsLetter);
     }
 }
 
@@ -111,40 +124,26 @@ int main() {
     string lineaArchivoPrincipal;
     while (getline(archivoListaLineas, lineaArchivoPrincipal)){
         listaLineas->append(lineaArchivoPrincipal);
-        unsigned int contadorLetrasLinea = 0;
         string currentWord="";
-
-        if (checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea]) && contadorLetrasLinea<lineaArchivoPrincipal.size()){
-            currentWord=currentWord+lineaArchivoPrincipal[contadorLetrasLinea];
-            contadorLetrasLinea++;
-        }
-
-        while(contadorLetrasLinea<lineaArchivoPrincipal.size()){
+        for(unsigned int i=0;i<lineaArchivoPrincipal.size();i++){
             // si el anterior caracter no es una letra pero este sí
-            if (!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&& checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
-                    currentWord="";
-                    currentWord=currentWord+lineaArchivoPrincipal[contadorLetrasLinea];
-                    contadorLetrasLinea++;
-            }
-            // si el anterior caracter no es una letra y este tampoco
-            else if(!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&& !checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
-                    contadorLetrasLinea++;
+            if (esPrimerLetra(lineaArchivoPrincipal,i)){
+                currentWord=currentWord+lineaArchivoPrincipal[i];
             }
             // si el anterior caracter es una letra y este también
-            else if(checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&&checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
-                    currentWord=currentWord+lineaArchivoPrincipal[contadorLetrasLinea];
-                    contadorLetrasLinea++;
+            else if(esLetraIntermedia(lineaArchivoPrincipal,i)){
+                currentWord=currentWord+lineaArchivoPrincipal[i];
             }
             // si el anterior caracter es una letra pero este no
-            else if(checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&&!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
+            else if(esFinDePalabra(lineaArchivoPrincipal,i)){
+                if(!ignorar->containsWord(currentWord))
                     triePrincipal->insert(currentWord);
-                    contadorLetrasLinea++;
-
+                currentWord="";
             }
         }
 
     }
-    List<string> * palabras=triePrincipal->getMatches("pala");
+    List<string> * palabras=triePrincipal->getMatches("");
     palabras->print();
     //nombreArchivo+=".conf";
     //cout << nombreArchivo << endl;
