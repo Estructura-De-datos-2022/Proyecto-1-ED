@@ -6,18 +6,18 @@
 class TrieNode{
 private:
     Dictionary<char, TrieNode*> *children;
-    BSTree<int>* lineNumbers;
+
 
 
 public:
     bool isFinal;
     int prefixCount;
-
+    ArrayList<int>* lineNumbers;
     TrieNode(){
         isFinal = false;
         prefixCount = 0;
         children = new BSTreeDictionary<char, TrieNode*>();
-        lineNumbers= new BSTree<int>();
+        lineNumbers= new ArrayList<int>();
     }
     ~TrieNode(){
         delete children;

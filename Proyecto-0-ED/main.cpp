@@ -15,6 +15,7 @@ https://replit.com/@parzibyte/LeerArchivoEnC#main.cpp
 https://www.delftstack.com/es/howto/c/c-check-if-file-exists/#:~:text=completa%20del%20archivo.-,stat()%20Funci%C3%B3n%20para%20comprobar%20si%20un%20archivo%20existe%20en,si%20el%20archivo%20no%20existe.&text=El%20programa%20imprimir%C3%A1%20file%20exists%20si%20el%20archivo%20demo.
 https://www.delftstack.com/es/howto/cpp/how-to-convert-string-to-lower-case-in-cpp/
 */
+
 string toLower(string s) {
     transform(s.begin(), s.end(), s.begin(),
        [](unsigned char c){ return tolower(c); }
@@ -107,13 +108,15 @@ int main() {
     ifstream archivoIgn(archivoIgnorar.c_str());
     string lineaIgn;
     //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
+    int numeroLineaIgnorar=0;
     while (getline(archivoIgn, lineaIgn)) {
-        ignorar->insert(lineaIgn);
+        ignorar->insert(lineaIgn,numeroLineaIgnorar);
+        numeroLineaIgnorar++;
     }
 
     //Cout de interfaz de texto (interacción con el usuario)
     cout<<"Hola!!"<<endl;
-    cout<<"A continuación leeremos el archivo que nos proporciones y de acuerdo al número que insertes, realizaremos diversos experimentos en este."<<endl;
+    cout<<"A continuación leeremos el archivo que nos proporcione y de acuerdo al número que inserte, realizaremos diversos experimentos en este."<<endl;
     cout<<"Inserte el nombre de archivo con su respectiva ruta y extensión: ";
 
     //Generación de estructura ArrayList con el template de un KVPair para arignar el número de
@@ -123,34 +126,96 @@ int main() {
 
     string archivoPrincipal;
     cin>>archivoPrincipal;
+    cout<<"Leyendo archivo..."<<endl;
     //Uso de método para identificar si un archivo existe, en este caso se valida al ser una entrada del usuario
     if(!checkIfFileExists(archivoPrincipal.c_str())){
-        throw runtime_error("Error: File not found");
+        throw runtime_error("Error: Archivo no se encuentra.");
     }
     ifstream archivoListaLineas(archivoPrincipal.c_str());
     string lineaArchivoPrincipal;
+    int numeroLineaArchivoPrincipal=0;
     while (getline(archivoListaLineas, lineaArchivoPrincipal)){
         listaLineas->append(lineaArchivoPrincipal);
         lineaArchivoPrincipal=toLower(lineaArchivoPrincipal);
         string currentWord="";
         for(unsigned int i=0;i<lineaArchivoPrincipal.size();i++){
-            // si el anterior caracter no es una letra pero este sí
+            // si el anterior char no es una letra pero este sí
             if (esPrimerLetra(lineaArchivoPrincipal,i)){
                 currentWord=currentWord+lineaArchivoPrincipal[i];
             }
-            // si el anterior caracter es una letra y este también
+            // si el anterior char es una letra y este también
             else if(esLetraIntermedia(lineaArchivoPrincipal,i)){
                 currentWord=currentWord+lineaArchivoPrincipal[i];
             }
-            // si el anterior caracter es una letra pero este no
+            // si el anterior char es una letra pero este no
             else if(esFinDePalabra(lineaArchivoPrincipal,i)){
                 if(!ignorar->containsWord(currentWord))
-                    triePrincipal->insert(currentWord);
+                    triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
                 currentWord="";
             }
         }
-
+        numeroLineaArchivoPrincipal++;
     }
+    cout<<"Archivo leído."<<endl;
+    int eleccion1;
+    int eleccion2;
+    while(true){
+        cout<<"Operaciones "<<endl;
+        cout<<"0- Salir."<<endl;
+        cout<<"1- Consulta por prefijo."<<endl;
+        cout<<"2- Buscar palabra."<<endl;
+        cout<<"3- Buscar por cantidad de letras."<<endl;
+        cout<<"4- Ver palabras más utilizadas."<<endl;
+        cout<<"Inserte la operación que desea realizar: "
+        cin>>eleccion1;
+        if(eleccion1==0){
+            break;
+        }
+        if else(eleccion1==1){
+            cout<<"Inserte el prefijo que desea buscar: "
+            cin>>eleccion1;
+            List<string> * prefijos=triePrincipal->getMatches(eleccion1);
+            cout<<"Palabras con el prefijo ingresado: "<<endl;
+            palabras->print();
+            delete palabras
+            eleccion1=1;
+        }
+        if else(eleccion1==2){
+            cout<<"Inserte el prefijo que desea buscar: "
+            cin>>eleccion1;
+            List<string> * prefijos=triePrincipal->getMatches(eleccion1);
+            cout<<"Palabras con el prefijo ingresado: "<<endl;
+            palabras->print();
+            delete palabras
+            eleccion1=1;
+        }
+        if else(eleccion1==3){
+
+        }
+        if else(eleccion1==4){
+            while(true){
+                cout<<"Operaciones con palabras más utilizadas "<<endl;
+                cout<<"0- Regresar."<<endl;
+                cout<<"1- Agregar palabra a ignorar."<<endl;
+                cout<<"2- Borrar palabra a ignorar."<<endl;
+                cout<<"3- Ver top."<<endl;
+                if(eleccion2==0){
+                    break;
+                }
+                if else(eleccion2==1){
+
+                }
+                if else(eleccion2==2){
+
+                }
+                if else(eleccion2==3){
+
+                }
+            }
+        }
+    }
+
+//--------------------------------------------------------------------------------------------
     //List<string> * palabras=triePrincipal->getMatches("");
     //palabras->print();
     //nombreArchivo+=".conf";
