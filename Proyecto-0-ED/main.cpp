@@ -186,7 +186,9 @@ int main() {
                 for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
                     listaLineas->goToPos(listaApariciones->getElement());
                     cout<<listaLineas->getElement()<<endl;
+                    cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
                 }
+                cout<<"*******************************************************************************************************"<<endl;
             }
             delete listaApariciones;
             delete palabrasConPrefijo;
