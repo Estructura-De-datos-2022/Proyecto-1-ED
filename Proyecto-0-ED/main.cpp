@@ -166,49 +166,58 @@ int main() {
         cout<<"2- Buscar palabra."<<endl;
         cout<<"3- Buscar por cantidad de letras."<<endl;
         cout<<"4- Ver palabras más utilizadas."<<endl;
-        cout<<"Inserte la operación que desea realizar: "
+        cout<<"Inserte la operación que desea realizar: ";
         cin>>eleccion1;
         if(eleccion1==0){
             break;
         }
-        if else(eleccion1==1){
-            cout<<"Inserte el prefijo que desea buscar: "
-            cin>>eleccion1;
-            List<string> * prefijos=triePrincipal->getMatches(eleccion1);
+        if(eleccion1==1){
+            string prefijo;
+            ArrayList<int>* listaApariciones;
+            cout<<"Inserte el prefijo que desea buscar: ";
+            cin>>prefijo;
+            List<string> * palabrasConPrefijo=triePrincipal->getMatches(prefijo);
             cout<<"Palabras con el prefijo ingresado: "<<endl;
-            palabras->print();
-            delete palabras
+            for(palabrasConPrefijo->goToStart();!palabrasConPrefijo->atEnd();palabrasConPrefijo->next()){
+                cout<<palabrasConPrefijo->getElement()<<endl;
+                listaApariciones=triePrincipal->getLineNumbers(palabrasConPrefijo->getElement());
+                cout<<"Cantidad de veces que aparece en el archivo: "<<listaApariciones->getSize()<<endl;
+                cout<<"Líneas en las que aparece la palabra: "<<endl;
+                for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
+                    listaLineas->goToPos(listaApariciones->getElement());
+                    cout<<listaLineas->getElement()<<endl;
+                }
+            }
+            delete listaApariciones;
+            delete palabrasConPrefijo;
             eleccion1=1;
         }
-        if else(eleccion1==2){
-            cout<<"Inserte el prefijo que desea buscar: "
-            cin>>eleccion1;
-            List<string> * prefijos=triePrincipal->getMatches(eleccion1);
-            cout<<"Palabras con el prefijo ingresado: "<<endl;
-            palabras->print();
-            delete palabras
-            eleccion1=1;
-        }
-        if else(eleccion1==3){
+        if (eleccion1==2){
 
         }
-        if else(eleccion1==4){
+        if (eleccion1==3){
+
+        }
+        if (eleccion1==4){
             while(true){
+                eleccion2=0;
                 cout<<"Operaciones con palabras más utilizadas "<<endl;
                 cout<<"0- Regresar."<<endl;
                 cout<<"1- Agregar palabra a ignorar."<<endl;
                 cout<<"2- Borrar palabra a ignorar."<<endl;
                 cout<<"3- Ver top."<<endl;
+                cout<<"Inserte la operación que desea realizar: ";
+                cin>>eleccion2;
                 if(eleccion2==0){
                     break;
                 }
-                if else(eleccion2==1){
+                if (eleccion2==1){
 
                 }
-                if else(eleccion2==2){
+                if(eleccion2==2){
 
                 }
-                if else(eleccion2==3){
+                if(eleccion2==3){
 
                 }
             }

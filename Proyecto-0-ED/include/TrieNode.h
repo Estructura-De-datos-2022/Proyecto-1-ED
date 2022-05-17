@@ -21,6 +21,10 @@ public:
     }
     ~TrieNode(){
         delete children;
+        delete lineNumbers;
+    }
+    ArrayList<int>* getLineNumbers(){
+        return lineNumbers;
     }
     bool contains(char c) {
         return children->contains(c);
