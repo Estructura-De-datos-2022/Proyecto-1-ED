@@ -24,13 +24,13 @@ class ArrayList : public List<E>{
         }
 
         void expand(){
-            E *temp= elements;
             max=max*2;
-            elements=new E[max];
+            E *temp=new E[max];
             for(int i=0;i<size;i++){
-                elements[i]=temp[i];
+                temp[i]=elements[i];
             }
-            delete temp;
+            delete [] elements;
+            elements=temp;
         }
 
     public:

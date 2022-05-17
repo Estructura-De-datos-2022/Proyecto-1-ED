@@ -22,17 +22,67 @@ int checkIfFileExists(const char* filename){
     else
         return 0;
 }
-bool checkIfIsLetter(char letra){
-    return (letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' && letra!='¿' && letra!=':');
+
+bool esFinDePalabra(string fila,int numeroLetra){
+    letra=fila[numeroLetra];
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
+    letra!='¿' && letra!=':');
+    if(numeroLetra==0){
+        return false
+    }
+    else{
+        letraAnterior=fila[numeroLetra-1]
+        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':');
+        return (lastIsLetter && !isLetter);
+    }
 }
+bool esPrimerLetra(string fila,int numeroLetra){
+    letra=fila[numeroLetra]
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
+    letra!='¿' && letra!=':');
+    if(numeroLetra==0){
+        if(isLetter){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        letraAnterior=fila[numeroLetra-1]
+        lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':');
+        return (!lastIsLetter && isLetter);
+    }
+}
+bool esLetraIntermedia(string fila,int numeroLetra){
+    letra=fila[numeroLetra]
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
+    letra!='¿' && letra!=':');
+    if(numeroLetra==0){
+        return false;
+    }
+    else{
+        letraAnterior=fila[numeroLetra-1]
+        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':');
+        return (isLetter && )
+    }
+}
+
 int main() {
+    //Declaración de varaiables en memoria
+    Trie *ignorar=new Trie();
+    Trie* triePrincipal=new Trie();
+    List<string>* listaLineas= new ArrayList<string>(100000);
     //Configuración idioma español y agregado de tildes
     setlocale(LC_ALL,"spanish");
     SetConsoleCP(1252);
     SetConsoleOutputCP(1252);
 
     //Generación de estructura Trie para cargar los datos de las palabras por ignorar
-    Trie *ignorar=new Trie();
+
     string archivoIgnorar = "ignorar.txt";
     ifstream archivoIgn(archivoIgnorar.c_str());
     string lineaIgn;
@@ -48,65 +98,63 @@ int main() {
 
     //Generación de estructura ArrayList con el template de un KVPair para arignar el número de
     //como llave y el string de la fila como valor
-    List<KVPair<int,string>>* listaLineas= new ArrayList<KVPair<int,string>>();
 
-    Trie* triePrincipal=new Trie();
+
+
     string archivoPrincipal;
     cin>>archivoPrincipal;
-    //Uso de método para identificar si un archivo existe, en este caso se valida al ser una entrada
-    //del usuario
+    //Uso de método para identificar si un archivo existe, en este caso se valida al ser una entrada del usuario
     if(!checkIfFileExists(archivoPrincipal.c_str())){
         throw runtime_error("Error: File not found");
     }
     ifstream archivoListaLineas(archivoPrincipal.c_str());
     string lineaArchivoPrincipal;
-    int contadorFilas=1;
     while (getline(archivoListaLineas, lineaArchivoPrincipal)){
-        listaLineas->append(KVPair<int,string>(contadorFilas,lineaArchivoPrincipal));
+        listaLineas->append(lineaArchivoPrincipal);
         unsigned int contadorLetrasLinea = 0;
         string currentWord="";
+
         if (checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea]) && contadorLetrasLinea<lineaArchivoPrincipal.size()){
             currentWord=currentWord+lineaArchivoPrincipal[contadorLetrasLinea];
             contadorLetrasLinea++;
         }
 
         while(contadorLetrasLinea<lineaArchivoPrincipal.size()){
-            if (!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])){
-                if(checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
+            // si el anterior caracter no es una letra pero este sí
+            if (!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&& checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
                     currentWord="";
                     currentWord=currentWord+lineaArchivoPrincipal[contadorLetrasLinea];
                     contadorLetrasLinea++;
-
-                }
-
-                else{
-                    contadorLetrasLinea++;
-                }
             }
-            else{
-                if(checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
+            // si el anterior caracter no es una letra y este tampoco
+            else if(!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&& !checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
+                    contadorLetrasLinea++;
+            }
+            // si el anterior caracter es una letra y este también
+            else if(checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&&checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
                     currentWord=currentWord+lineaArchivoPrincipal[contadorLetrasLinea];
                     contadorLetrasLinea++;
-                }
-
-                else{
+            }
+            // si el anterior caracter es una letra pero este no
+            else if(checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea-1])&&!checkIfIsLetter(lineaArchivoPrincipal[contadorLetrasLinea])){
                     triePrincipal->insert(currentWord);
                     contadorLetrasLinea++;
-                }
 
             }
         }
-        contadorFilas++;
+
     }
-    List<string> * palabras=triePrincipal->getMatches("");
+    List<string> * palabras=triePrincipal->getMatches("pala");
     palabras->print();
     //nombreArchivo+=".conf";
     //cout << nombreArchivo << endl;
     /*if(nombreArchivo.su)*/
-
-    //}
     //List<string> *palabras = ignorar.getMatches("");
     //palabras->print();
+    delete palabras;
+    delete ignorar;
+    delete triePrincipal;
+    delete listaLineas;
     return 0;
 }
 

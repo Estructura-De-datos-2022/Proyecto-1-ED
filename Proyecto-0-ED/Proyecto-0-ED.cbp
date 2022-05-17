@@ -33,6 +33,7 @@
 			<Add option="-fexceptions" />
 			<Add directory="include" />
 		</Compiler>
+		<Unit filename="include/ArrayList.h" />
 		<Unit filename="include/BSTNode.h" />
 		<Unit filename="include/BSTree.h" />
 		<Unit filename="include/BSTreeDictionary.h" />
