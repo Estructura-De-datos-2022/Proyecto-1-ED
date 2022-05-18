@@ -12,8 +12,10 @@ private:
 public:
     bool isFinal;
     int prefixCount;
+    int letterNumber;
     ArrayList<int>* lineNumbers;
     TrieNode(){
+        letterNumber=0;
         isFinal = false;
         prefixCount = 0;
         children = new BSTreeDictionary<char, TrieNode*>();

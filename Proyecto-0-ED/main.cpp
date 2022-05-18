@@ -210,7 +210,26 @@ int main() {
             listaApariciones->goToStart();
         }
         if (eleccion1==3){
+            int cantidadLetras;
+            cout<<"Inserte la cantidad de letras que desea en la lista de palabras: ";
+            cin>>cantidadLetras;
+            cout<<"Lista de palabras con "<<cantidadLetras<<" letras: "<<endl;
+            List<string> * palabras=triePrincipal->getWordsWithThisLength(cantidadLetras);
+            for(palabras->goToStart();!palabras->atEnd();palabras->next()){
+                cout<<"Palabra: "<<palabras->getElement()<<endl;
+                cout<<"Cantidad de veces que aparece en el archivo: "<<triePrincipal->getLineNumbersLength(palabras->getElement())<<endl;
+            }
 
+            /*
+            cout<<"Líneas en las que aparece la palabra: "<<endl;
+            for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
+                cout<<"Línea "<<listaApariciones->getElement()<<": "<<endl;
+                listaLineas->goToPos(listaApariciones->getElement());
+                cout<<listaLineas->getElement()<<endl;
+                cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
+            }
+            listaApariciones->goToStart();
+            */
         }
         if (eleccion1==4){
             while(true){
