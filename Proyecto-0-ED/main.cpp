@@ -218,18 +218,11 @@ int main() {
             for(palabras->goToStart();!palabras->atEnd();palabras->next()){
                 cout<<"Palabra: "<<palabras->getElement()<<endl;
                 cout<<"Cantidad de veces que aparece en el archivo: "<<triePrincipal->getLineNumbersLength(palabras->getElement())<<endl;
-            }
 
-            /*
-            cout<<"Líneas en las que aparece la palabra: "<<endl;
-            for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
-                cout<<"Línea "<<listaApariciones->getElement()<<": "<<endl;
-                listaLineas->goToPos(listaApariciones->getElement());
-                cout<<listaLineas->getElement()<<endl;
                 cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
+
             }
-            listaApariciones->goToStart();
-            */
+            delete palabras;
         }
         if (eleccion1==4){
             while(true){
