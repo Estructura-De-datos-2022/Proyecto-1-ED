@@ -39,7 +39,25 @@ private:
         }
         delete children;
     }
-
+    void getWordsWithThisLengthAux(TrieNode *current, string prefix, List<string> *words, int length){
+        if(current->isFinal){
+            if(current->letterNumber==length){
+                words->append(prefix);
+            }
+        }
+        else{
+            if(current->letterNumber!=length){
+                List<char> *children = current->getChildren();
+                for (children->goToStart(); !children->atEnd(); children->next()){
+                    string newPrefix = prefix;
+                    char c = children->getElement();
+                    newPrefix.append(1, c);
+                    getWordsWithThisLengthAux(current->getChild(c), newPrefix, words, length);
+                }
+                delete children;
+            }
+        }
+    }
 public:
     Trie() {
         root = new TrieNode();
@@ -56,6 +74,7 @@ public:
                 if (!current->contains(word[i]))
                     current->add(word[i]);
                 current = current->getChild(word[i]);
+                current->letterNumber=i;
             }
             current->prefixCount++;
             current->isFinal = true;
@@ -107,6 +126,16 @@ public:
 
         return current->getLineNumbers();
     }
+    int getLineNumbersLength(string word){
+        TrieNode *current = root;
+        for (unsigned int i = 0; i < word.size(); i++){
+            if(!current->contains(word[i]))
+                return current->getLineNumbers()->getSize();
+            current = current->getChild(word[i]);
+        }
+
+        return current->getLineNumbers()->getSize();
+    }
 
     void remove(string word) {
         if(!containsWord(word))
@@ -140,6 +169,13 @@ public:
             current = current->getChild(prefix[i]);
         }
         getMatchesAux(current, prefix, words);
+        return words;
+    }
+    List<string>* getWordsWithThisLength(int length) {
+        length--;
+        List<string> *words = new DLinkedList<string>();
+        TrieNode *current = root;
+        getWordsWithThisLengthAux(current, "", words, length);
         return words;
     }
 };
