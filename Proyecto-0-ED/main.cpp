@@ -188,9 +188,10 @@ int main() {
                     cout<<listaLineas->getElement()<<endl;
                     cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
                 }
+                listaApariciones->goToStart();
                 cout<<"*******************************************************************************************************"<<endl;
             }
-            delete listaApariciones;
+            palabrasConPrefijo->goToStart();
             delete palabrasConPrefijo;
         }
         if (eleccion1==2){
@@ -198,7 +199,6 @@ int main() {
             ArrayList<int>* listaApariciones;
             cout<<"Inserte la palabra que desea buscar: ";
             cin>>palabra;
-            cout<<"Palabras con el prefijo ingresado: "<<endl;
             listaApariciones=triePrincipal->getLineNumbers(palabra);
             cout<<"Líneas en las que aparece la palabra: "<<endl;
             for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
@@ -207,7 +207,7 @@ int main() {
                 cout<<listaLineas->getElement()<<endl;
                 cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
             }
-            delete listaApariciones;
+            listaApariciones->goToStart();
         }
         if (eleccion1==3){
 
