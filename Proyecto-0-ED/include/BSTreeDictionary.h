@@ -58,6 +58,7 @@ public:
     int getSize(){
         return pairs.getSize();
     }
+    
 };
 
 #endif // BSTREEDICTIONARY_H

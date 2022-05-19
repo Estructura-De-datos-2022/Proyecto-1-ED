@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ArrayList.h"
+#include "MaxHeap.h"
 #include "Trie.h"
 #include <windows.h>
 #include<stdio.h>
@@ -218,9 +219,7 @@ int main() {
             for(palabras->goToStart();!palabras->atEnd();palabras->next()){
                 cout<<"Palabra: "<<palabras->getElement()<<endl;
                 cout<<"Cantidad de veces que aparece en el archivo: "<<triePrincipal->getLineNumbersLength(palabras->getElement())<<endl;
-
                 cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
-
             }
             delete palabras;
         }
@@ -247,21 +246,44 @@ int main() {
                     ignorar->insert(palabra,numeroLineaIgnorar);
                     archivoAIgnorar.close();
                     cout<<"Palabra agregada a la lista de palabras a ignorar."<<endl;
+                    numeroLineaIgnorar++;
                 }
                 if(eleccion2==2){
                     string palabra;
                     cout<<"Inserte la palabra que desea borrar de la lista de palabras a ignorar: ";
                     cin>>palabra;
                     ignorar->remove(palabra);
+                    List<string> * palabras = ignorar->getMatches("");
                     ofstream archivoAIgnorar;
-                    // archivoAIgnorar.open(archivoIgnorar,ios::out);
-                    // archivoAIgnorar<<endl<<palabra;
-                    //archivoAIgnorar.close();
+                    archivoAIgnorar.open(archivoIgnorar,ios::out);
+                    for(palabras->goToStart();!palabras->atEnd();palabras->next()){
+                        archivoAIgnorar<<endl<<palabras->getElement();
+                    }
+                    archivoAIgnorar.close();
                     cout<<"Palabra borrada de la lista de palabras a ignorar."<<endl;
-
+                    numeroLineaIgnorar--;
+                    delete palabras;
                 }
                 if(eleccion2==3){
-
+                    int cantidadPalabras;
+                    cout<<"Inserte la cantidad de palabras que desea ver: ";
+                    cin>>cantidadPalabras;
+                    MaxHeap<int,string> * heapPalabras= new MaxHeap<int,string>();
+                    BSTreeDictionary<string, int>* diccionarioPalabras= triePrincipal->getMatches2("");
+                    List<string> * palabras= diccionarioPalabras->getKeys();
+                    List<int> * llaves = diccionarioPalabras->getValues();
+                    palabras->goToStart();
+                    for(llaves->goToStart();!llaves->atEnd();llaves->next()){
+                        if(!ignorar->containsWord(palabras)->getElement()){
+                            heapPalabras->insert(llaves->getElement(),palabras->getElement());
+                        }
+                    }
+                    for(int i=0;i<cantidadPalabras;i++){
+                        cout<<"Palabra: "<<heapPalabras->first()<<endl;
+                        cout<<"Cantidad de veces que aparece en el archivo: "<<heapPalabras->firstKey()<<endl;
+                        cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
+                        heapPalabras->remove();
+                    }
                 }
             }
         }

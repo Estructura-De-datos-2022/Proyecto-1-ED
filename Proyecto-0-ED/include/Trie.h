@@ -39,6 +39,18 @@ private:
         }
         delete children;
     }
+    void getMatchesAux2(TrieNode *current, string prefix,BSTreeDictionary<string,int> *words) {
+        if (current->isFinal)
+            words->insert(prefix,current->getLineNumbers()->getSize());
+        List<char> *children = current->getChildren();
+        for (children->goToStart(); !children->atEnd(); children->next()){
+            string newPrefix = prefix;
+            char c = children->getElement();
+            newPrefix.append(1, c);
+            getMatchesAux2(current->getChild(c), newPrefix, words);
+        }
+        delete children;
+    }
     void getWordsWithThisLengthAux(TrieNode *current, string prefix, List<string> *words, int length){
         if(current->isFinal){
             if(current->letterNumber==length){
@@ -178,6 +190,19 @@ public:
         getWordsWithThisLengthAux(current, "", words, length);
         return words;
     }
+    BSTreeDictionary<string,int>* getMatches2(string prefix) {
+        BSTreeDictionary<string,int> *words = new BSTreeDictionary<string,int>();
+        TrieNode *current = root;
+        for (unsigned int i = 0; i < prefix.size(); i++){
+            if(!current->contains(prefix[i]))
+                return words;
+            current = current->getChild(prefix[i]);
+        }
+        getMatchesAux2(current, prefix, words);
+        return words;
+    }
+
 };
+
 
 #endif // TRIE_H
