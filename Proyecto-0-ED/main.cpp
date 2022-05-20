@@ -156,7 +156,7 @@ int main() {
         }
         numeroLineaArchivoPrincipal++;
     }
-    cout<<"Archivo leódo."<<endl;
+    cout<<"Archivo leído."<<endl;
     int eleccion1;
     int eleccion2;
     while(true){
@@ -230,7 +230,7 @@ int main() {
                 cout<<"1- Agregar palabra a ignorar."<<endl;
                 cout<<"2- Borrar palabra a ignorar."<<endl;
                 cout<<"3- Ver top."<<endl;
-                cout<<"Inserte la operaci�n que desea realizar: ";
+                cout<<"Inserte la operación que desea realizar: ";
                 cin>>eleccion2;
                 if(eleccion2==0){
                     break;
@@ -263,7 +263,17 @@ int main() {
                     numeroLineaIgnorar--;
                 }
                 if(eleccion2==3){
-
+                    int top;
+                    HeapPriorityQueue<string>* palabrasMasUtilizadas;
+                    cout << "Por favor indique el número del top de palabras más utilizadas que desee: " << endl;
+                    cin >> top;
+                    palabrasMasUtilizadas = triePrincipal->getMatches2("");
+                    cout << palabrasMasUtilizadas->getSize() << endl;
+                    for (int i = 0; i< top; i++){
+                        string palabra = palabrasMasUtilizadas->removeMin();
+                        cout << "Palabra : " << palabra << endl;
+                        cout << "Cantidad de veces que aparece: " << triePrincipal->getLineNumbersLength(palabra) << endl;
+                    }
                 }
             }
         }

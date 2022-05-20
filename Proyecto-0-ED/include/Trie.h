@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "TrieNode.h"
+#include "HeapPriorityQueue.h"
 
 using std::runtime_error;
 using std::cout;
@@ -36,6 +37,20 @@ private:
             char c = children->getElement();
             newPrefix.append(1, c);
             getMatchesAux(current->getChild(c), newPrefix, words);
+        }
+        delete children;
+    }
+    void getMatchesAux2(TrieNode *current, string prefix, HeapPriorityQueue<string> *words) {
+        if (current->isFinal){
+            ArrayList<int>* numero = current->getLineNumbers();
+            words->insert(prefix,numero->getSize());
+        }
+        List<char> *children = current->getChildren();
+        for (children->goToStart(); !children->atEnd(); children->next()){
+            string newPrefix = prefix;
+            char c = children->getElement();
+            newPrefix.append(1, c);
+            getMatchesAux2(current->getChild(c), newPrefix, words);
         }
         delete children;
     }
@@ -169,6 +184,17 @@ public:
             current = current->getChild(prefix[i]);
         }
         getMatchesAux(current, prefix, words);
+        return words;
+    }
+    HeapPriorityQueue<string>* getMatches2(string prefix) {
+        HeapPriorityQueue<string> *words = new HeapPriorityQueue<string>(root->prefixCount);
+        TrieNode *current = root;
+        for (unsigned int i = 0; i < prefix.size(); i++){
+            if(!current->contains(prefix[i]))
+                return words;
+            current = current->getChild(prefix[i]);
+        }
+        getMatchesAux2(current, prefix, words);
         return words;
     }
     List<string>* getWordsWithThisLength(int length) {

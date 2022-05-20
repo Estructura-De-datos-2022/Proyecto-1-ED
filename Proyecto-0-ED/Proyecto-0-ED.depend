@@ -1,21 +1,26 @@
 # depslib dependency file v1.0
-1652565801 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
+1653002631 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
+	<algorithm>
 	<fstream>
 	<stdlib.h>
 	<string.h>
+	"ArrayList.h"
 	"Trie.h"
 	<windows.h>
+	<stdio.h>
+	<sys/stat.h>
 	<cstdlib>
 	<cstdio>
 
-1651792414 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
+1653002446 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
 	<stdexcept>
 	<iostream>
 	<string>
 	"TrieNode.h"
+	"HeapPriorityQueue.h"
 
-1651792172 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trienode.h
+1652892844 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trienode.h
 	"BSTreeDictionary.h"
 
 1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstreedictionary.h
@@ -105,4 +110,20 @@
 	<iostream>
 
 1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\dnode.h
+
+1652748924 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
+	"List.h"
+	<stdexcept>
+	<iostream>
+
+1653013658 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\heappriorityqueue.h
+	"PriorityQueue.h"
+	"MaxHeap.h"
+	"KVPair.h"
+	<stdexcept>
+
+1649094482 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\priorityqueue.h
+
+1653013658 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\maxheap.h
+	<stdexcept>
 
