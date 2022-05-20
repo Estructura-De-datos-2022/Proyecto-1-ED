@@ -176,7 +176,7 @@ public:
         root = new TrieNode();
     }
     List<string>* getMatches(string prefix) {
-        List<string> *words = new DLinkedList<string>();
+        List<string> *words = new ArrayList<string>();
         TrieNode *current = root;
         for (unsigned int i = 0; i < prefix.size(); i++){
             if(!current->contains(prefix[i]))

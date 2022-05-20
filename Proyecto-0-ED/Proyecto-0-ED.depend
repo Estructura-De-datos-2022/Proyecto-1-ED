@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1653002631 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
+1653067459 source:c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
 	<algorithm>
 	<fstream>
@@ -13,7 +13,7 @@
 	<cstdlib>
 	<cstdio>
 
-1653002446 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
+1653082694 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
 	<stdexcept>
 	<iostream>
 	<string>
