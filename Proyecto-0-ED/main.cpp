@@ -115,8 +115,8 @@ int main() {
 
     //Cout de interfaz de texto (interacci�n con el usuario)
     cout<<"Hola!!"<<endl;
-    cout<<"A continuación leeremos el archivo que nos proporcione y de acuerdo al número que inserte, realizaremos diversos experimentos en este."<<endl;
-    cout<<"Inserte el nombre de archivo con su respectiva ruta y extensión: ";
+    cout<<"A continuacion leeremos el archivo que nos proporcione y de acuerdo al numero que inserte, realizaremos diversos experimentos en este."<<endl;
+    cout<<"Inserte el nombre de archivo con su respectiva ruta y extension: ";
 
     //Generaci�n de estructura ArrayList con el template de un KVPair para arignar el n�mero de
     //como llave y el string de la fila como valor
@@ -155,7 +155,7 @@ int main() {
         }
         numeroLineaArchivoPrincipal++;
     }
-    cout<<"Archivo leído."<<endl;
+    cout<<"Archivo leido."<<endl;
     int eleccion1;
     int eleccion2;
     while(true) {
@@ -164,8 +164,8 @@ int main() {
         cout<<"1- Consulta por prefijo."<<endl;
         cout<<"2- Buscar palabra."<<endl;
         cout<<"3- Buscar por cantidad de letras."<<endl;
-        cout<<"4- Ver palabras más utilizadas."<<endl;
-        cout<<"Inserte la operación que desea realizar: ";
+        cout<<"4- Ver palabras mas utilizadas."<<endl;
+        cout<<"Inserte la operacion que desea realizar: ";
         cin>>eleccion1;
         if(eleccion1==0) {
             break;
@@ -181,7 +181,7 @@ int main() {
                 cout<<palabrasConPrefijo->getElement()<<endl;
                 listaApariciones=triePrincipal->getLineNumbers(palabrasConPrefijo->getElement());
                 cout<<"Cantidad de veces que aparece en el archivo: "<<listaApariciones->getSize()<<endl;
-                cout<<"Líneas en las que aparece la palabra: "<<endl;
+                cout<<"Lineas en las que aparece la palabra: "<<endl;
                 for(listaApariciones->goToStart(); !listaApariciones->atEnd(); listaApariciones->next()) {
                     listaLineas->goToPos(listaApariciones->getElement());
                     cout<<listaLineas->getElement()<<endl;
@@ -199,9 +199,9 @@ int main() {
             cout<<"Inserte la palabra que desea buscar: ";
             cin>>palabra;
             listaApariciones=triePrincipal->getLineNumbers(palabra);
-            cout<<"Líneas en las que aparece la palabra: "<<endl;
+            cout<<"Lineas en las que aparece la palabra: "<<endl;
             for(listaApariciones->goToStart(); !listaApariciones->atEnd(); listaApariciones->next()) {
-                cout<<"Línea "<<listaApariciones->getElement()<<": "<<endl;
+                cout<<"Linea "<<listaApariciones->getElement()<<": "<<endl;
                 listaLineas->goToPos(listaApariciones->getElement());
                 cout<<listaLineas->getElement()<<endl;
                 cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
@@ -224,12 +224,12 @@ int main() {
         if (eleccion1==4) {
             while(true) {
                 eleccion2=0;
-                cout<<"Operaciones con palabras más utilizadas "<<endl;
+                cout<<"Operaciones con palabras mas utilizadas "<<endl;
                 cout<<"0- Regresar."<<endl;
                 cout<<"1- Agregar palabra a ignorar."<<endl;
                 cout<<"2- Borrar palabra a ignorar."<<endl;
                 cout<<"3- Ver top."<<endl;
-                cout<<"Inserte la operación que desea realizar: ";
+                cout<<"Inserte la operacion que desea realizar: ";
                 cin>>eleccion2;
                 if(eleccion2==0) {
                     break;
@@ -264,7 +264,7 @@ int main() {
                 if(eleccion2==3) {
                     int top;
                     HeapPriorityQueue<string>* palabrasMasUtilizadas;
-                    cout << "Por favor indique el número del top de palabras más utilizadas que desee: " << endl;
+                    cout << "Por favor indique el numero del top de palabras más utilizadas que desee: ";
                     cin >> top;
                     palabrasMasUtilizadas = triePrincipal->getMatches2("");
                     cout << palabrasMasUtilizadas->getSize() << endl;
