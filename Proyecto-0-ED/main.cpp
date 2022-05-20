@@ -16,7 +16,7 @@ https://replit.com/@parzibyte/LeerArchivoEnC#main.cpp
 https://www.delftstack.com/es/howto/c/c-check-if-file-exists/#:~:text=completa%20del%20archivo.-,stat()%20Funci%C3%B3n%20para%20comprobar%20si%20un%20archivo%20existe%20en,si%20el%20archivo%20no%20existe.&text=El%20programa%20imprimir%C3%A1%20file%20exists%20si%20el%20archivo%20demo.
 https://www.delftstack.com/es/howto/cpp/how-to-convert-string-to-lower-case-in-cpp/
 */
-
+//convierte un string a minuscula
 string toLower(string s) {
     transform(s.begin(), s.end(), s.begin(),
     [](unsigned char c) {
@@ -25,6 +25,7 @@ string toLower(string s) {
              );
     return s;
 }
+//revisa si el archivo existe
 int checkIfFileExists(const char* filename) {
     struct stat buffer;
     int exist = stat(filename,&buffer);
@@ -33,6 +34,7 @@ int checkIfFileExists(const char* filename) {
     else
         return 0;
 }
+//revisa en el string si la palabra terminó, para añadirla al trie
 bool esFinDePalabra(string fila,int numeroLetra) {
     char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?'
@@ -50,6 +52,7 @@ bool esFinDePalabra(string fila,int numeroLetra) {
         return (lastIsLetter && !isLetter);
     }
 }
+//revisa que la palabra del archivo que sigue es el inicio de una palabra
 bool esPrimerLetra(string fila,int numeroLetra) {
     char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
@@ -71,6 +74,7 @@ bool esPrimerLetra(string fila,int numeroLetra) {
         return (!lastIsLetter && isLetter);
     }
 }
+//revisa si la siguiente letra del archivo es parte de la misma plabra
 bool esLetraIntermedia(string fila,int numeroLetra) {
     char letra=fila[numeroLetra];
     bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
@@ -115,8 +119,8 @@ int main() {
 
     //Cout de interfaz de texto (interacci�n con el usuario)
     cout<<"Hola!!"<<endl;
-    cout<<"A continuacion leeremos el archivo que nos proporcione y de acuerdo al numero que inserte, realizaremos diversos experimentos en este."<<endl;
-    cout<<"Inserte el nombre de archivo con su respectiva ruta y extension: ";
+    cout<<"A continuación leeremos el archivo que nos proporcione y de acuerdo al número que inserte, realizaremos diversos experimentos en este."<<endl;
+    cout<<"Inserte el nombre de archivo con su respectiva ruta y extensión: ";
 
     //Generaci�n de estructura ArrayList con el template de un KVPair para arignar el n�mero de
     //como llave y el string de la fila como valor
@@ -155,22 +159,25 @@ int main() {
         }
         numeroLineaArchivoPrincipal++;
     }
-    cout<<"Archivo leido."<<endl;
+    cout<<"Archivo leído."<<endl;
     int eleccion1;
     int eleccion2;
+    //menú de operaciones que puede realizar el usuario
     while(true) {
         cout<<"Operaciones "<<endl;
         cout<<"0- Salir."<<endl;
         cout<<"1- Consulta por prefijo."<<endl;
         cout<<"2- Buscar palabra."<<endl;
         cout<<"3- Buscar por cantidad de letras."<<endl;
-        cout<<"4- Ver palabras mas utilizadas."<<endl;
-        cout<<"Inserte la operacion que desea realizar: ";
+        cout<<"4- Ver palabras más utilizadas."<<endl;
+        cout<<"Inserte la operación que desea realizar: ";
         cin>>eleccion1;
         if(eleccion1==0) {
+            //cierra el programa
             break;
         }
         if(eleccion1==1) {
+            //consulta por el prefijo enviado por el usuario las palabras que lo utilizan
             string palabra;
             ArrayList<int>* listaApariciones;
             cout<<"Inserte el prefijo que desea buscar: ";
@@ -181,7 +188,7 @@ int main() {
                 cout<<palabrasConPrefijo->getElement()<<endl;
                 listaApariciones=triePrincipal->getLineNumbers(palabrasConPrefijo->getElement());
                 cout<<"Cantidad de veces que aparece en el archivo: "<<listaApariciones->getSize()<<endl;
-                cout<<"Lineas en las que aparece la palabra: "<<endl;
+                cout<<"Líneas en las que aparece la palabra: "<<endl;
                 for(listaApariciones->goToStart(); !listaApariciones->atEnd(); listaApariciones->next()) {
                     listaLineas->goToPos(listaApariciones->getElement());
                     cout<<listaLineas->getElement()<<endl;
@@ -194,14 +201,15 @@ int main() {
             delete palabrasConPrefijo;
         }
         if (eleccion1==2) {
+            //Busca la palabra brindada por el usuario en el trie principal y si la encuentra la devuelve y dice cuantas veces aparece
             string palabra;
             ArrayList<int>* listaApariciones;
             cout<<"Inserte la palabra que desea buscar: ";
             cin>>palabra;
             listaApariciones=triePrincipal->getLineNumbers(palabra);
-            cout<<"Lineas en las que aparece la palabra: "<<endl;
+            cout<<"Líneas en las que aparece la palabra: "<<endl;
             for(listaApariciones->goToStart(); !listaApariciones->atEnd(); listaApariciones->next()) {
-                cout<<"Linea "<<listaApariciones->getElement()<<": "<<endl;
+                cout<<"Línea "<<listaApariciones->getElement()<<": "<<endl;
                 listaLineas->goToPos(listaApariciones->getElement());
                 cout<<listaLineas->getElement()<<endl;
                 cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
@@ -209,6 +217,7 @@ int main() {
             listaApariciones->goToStart();
         }
         if (eleccion1==3) {
+            //Busca palabras en el trie principal que tengan la cantiad de letras solicitadas por el usuario
             int cantidadLetras;
             cout<<"Inserte la cantidad de letras que desea en la lista de palabras: ";
             cin>>cantidadLetras;
@@ -222,19 +231,22 @@ int main() {
             delete palabras;
         }
         if (eleccion1==4) {
+            //brinda un submenú de acciones que puede realizar el usuario
             while(true) {
                 eleccion2=0;
-                cout<<"Operaciones con palabras mas utilizadas "<<endl;
+                cout<<"Operaciones con palabras más utilizadas "<<endl;
                 cout<<"0- Regresar."<<endl;
                 cout<<"1- Agregar palabra a ignorar."<<endl;
                 cout<<"2- Borrar palabra a ignorar."<<endl;
                 cout<<"3- Ver top."<<endl;
-                cout<<"Inserte la operacion que desea realizar: ";
+                cout<<"Inserte la operación que desea realizar: ";
                 cin>>eleccion2;
                 if(eleccion2==0) {
+                    //regresa al submenu
                     break;
                 }
                 if (eleccion2==1) {
+                    //agrega la palabra que diga el usuario a la lista de palabras a ignorar
                     string palabra;
                     cout<<"Inserte la palabra que desea agregar a la lista de palabras a ignorar: ";
                     cin>>palabra;
@@ -247,6 +259,7 @@ int main() {
                     numeroLineaIgnorar++;
                 }
                 if(eleccion2==2) {
+                    //elimina de la lista de palabras a ignorar la palabra que diga el usuario
                     string palabra;
                     cout<<"Inserte la palabra que desea borrar de la lista de palabras a ignorar: ";
                     cin>>palabra;
@@ -262,9 +275,10 @@ int main() {
                     numeroLineaIgnorar--;
                 }
                 if(eleccion2==3) {
+                    //muestra el top de palabras mas utilizadas que desee el usuario
                     int top;
                     HeapPriorityQueue<string>* palabrasMasUtilizadas;
-                    cout << "Por favor indique el numero del top de palabras más utilizadas que desee: ";
+                    cout << "Por favor indique el número del top de palabras más utilizadas que desee: ";
                     cin >> top;
                     palabrasMasUtilizadas = triePrincipal->getMatches2("");
                     cout << palabrasMasUtilizadas->getSize() << endl;
@@ -280,48 +294,9 @@ int main() {
     }
 
 //--------------------------------------------------------------------------------------------
-    //List<string> * palabras=triePrincipal->getMatches("");
-    //palabras->print();
-    //nombreArchivo+=".conf";
-    //cout << nombreArchivo << endl;
-    /*if(nombreArchivo.su)*/
-    //List<string> *palabras = ignorar.getMatches("");
-    //palabras->print();
-    //delete palabras;
     delete ignorar;
     delete triePrincipal;
     delete listaLineas;
     return 0;
 }
 
-
-
-
-
-/*#include <iostream>
-#include <cstdlib>
-#include <cstdio>
-
-using namespace std;
-
-int main(){
-    FILE * archivo;
-    long medida;
-    char * texto;
-
-    archivo = fopen("ignorar.txt", "r");
-
-    fseek (archivo, 0, SEEK_END);
-    medida = ftell (archivo);
-    rewind (archivo);
-
-    texto = (char*) malloc (sizeof(char)*medida);
-
-    fread(texto, medida+1, 1, archivo);
-
-    cout << texto << endl;
-    fclose(archivo);
-
-    system("pause");
-    return 0;
-}*/
