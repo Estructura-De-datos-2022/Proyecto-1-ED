@@ -6,6 +6,7 @@
 #include "ArrayList.h"
 #include "Trie.h"
 #include <windows.h>
+//#include <locale.h>
 #include<stdio.h>
 #include<sys/stat.h>
 using namespace std;
@@ -16,7 +17,7 @@ https://www.delftstack.com/es/howto/c/c-check-if-file-exists/#:~:text=completa%2
 https://www.delftstack.com/es/howto/cpp/how-to-convert-string-to-lower-case-in-cpp/
 */
 
-string toLower(string s) {
+ string toLower(string s) {
     transform(s.begin(), s.end(), s.begin(),
        [](unsigned char c){ return tolower(c); }
     );
@@ -30,11 +31,10 @@ int checkIfFileExists(const char* filename){
     else
         return 0;
 }
-
 bool esFinDePalabra(string fila,int numeroLetra){
     char letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='�' && letra!='?'
-    &&letra!='�' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='�'&& letra!='�'&& letra!='0'&& letra!='1'
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?'
+    &&letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'&& letra!='1'
     && letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
     if(numeroLetra==0){
         return false;
@@ -42,8 +42,8 @@ bool esFinDePalabra(string fila,int numeroLetra){
     else{
         char letraAnterior=fila[numeroLetra-1];
         bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' &&
-         letraAnterior!='-' &&letraAnterior!='!' && letraAnterior!='�' && letraAnterior!='?' && letraAnterior!='�' && letraAnterior!=':'
-         && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='�'&& letraAnterior!='�'
+         letraAnterior!='-' &&letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
+         && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
          && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
          && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9'&& letraAnterior!='0');
         return (lastIsLetter && !isLetter);
@@ -51,10 +51,9 @@ bool esFinDePalabra(string fila,int numeroLetra){
 }
 bool esPrimerLetra(string fila,int numeroLetra){
     char letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='�' && letra!='?' &&
-    letra!='�' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='�'&& letra!='�'&& letra!='0'
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
+    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'
     && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
-
     if(numeroLetra==0){
         if(isLetter){
             return true;
@@ -66,8 +65,8 @@ bool esPrimerLetra(string fila,int numeroLetra){
     else{
         char letraAnterior=fila[numeroLetra-1];
         bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-        letraAnterior!='!' && letraAnterior!='�' && letraAnterior!='?' && letraAnterior!='�' && letraAnterior!=':'&& letraAnterior!='0'
-        && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='�'&& letraAnterior!='�'
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'&& letraAnterior!='0'
+        && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
         && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
         && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
         return (!lastIsLetter && isLetter);
@@ -75,8 +74,8 @@ bool esPrimerLetra(string fila,int numeroLetra){
 }
 bool esLetraIntermedia(string fila,int numeroLetra){
     char letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='�' && letra!='?' &&
-    letra!='�' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='�'&& letra!='�'&& letra!='0'
+    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
+    letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'
     && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
     if(numeroLetra==0){
         return false;
@@ -84,8 +83,8 @@ bool esLetraIntermedia(string fila,int numeroLetra){
     else{
         char letraAnterior=fila[numeroLetra-1];
         bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-        letraAnterior!='!' && letraAnterior!='�' && letraAnterior!='?' && letraAnterior!='�' && letraAnterior!=':'
-        && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='�'&& letraAnterior!='�'
+        letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
+        && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
         && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
         && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9'&& letraAnterior!='0');
         return (isLetter && lastIsLetter);
@@ -97,17 +96,17 @@ int main() {
     Trie *ignorar=new Trie();
     Trie* triePrincipal=new Trie();
     List<string>* listaLineas= new ArrayList<string>(100000);
-    //Configuraci�n idioma espa�ol y agregado de tildes
+    //Configuración idioma español y agregado de tildes
     setlocale(LC_ALL,"spanish");
     SetConsoleCP(1252);
     SetConsoleOutputCP(1252);
 
-    //Generaci�n de estructura Trie para cargar los datos de las palabras por ignorar
+    //Generación de estructura Trie para cargar los datos de las palabras por ignorar
 
     string archivoIgnorar = "ignorar.txt";
     ifstream archivoIgn(archivoIgnorar.c_str());
     string lineaIgn;
-    //Obtener l�nea de archivo, y almacenar contenido en "lineaIgn"
+    //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
     int numeroLineaIgnorar=0;
     while (getline(archivoIgn, lineaIgn)) {
         ignorar->insert(lineaIgn,numeroLineaIgnorar);
@@ -127,7 +126,7 @@ int main() {
     string archivoPrincipal;
     cin>>archivoPrincipal;
     cout<<"Leyendo archivo..."<<endl;
-    //Uso de m�todo para identificar si un archivo existe, en este caso se valida al ser una entrada del usuario
+    //Uso de método para identificar si un archivo existe, en este caso se valida al ser una entrada del usuario
     if(!checkIfFileExists(archivoPrincipal.c_str())){
         throw runtime_error("Error: Archivo no se encuentra.");
     }
@@ -182,7 +181,7 @@ int main() {
                 cout<<palabrasConPrefijo->getElement()<<endl;
                 listaApariciones=triePrincipal->getLineNumbers(palabrasConPrefijo->getElement());
                 cout<<"Cantidad de veces que aparece en el archivo: "<<listaApariciones->getSize()<<endl;
-                cout<<"L�neas en las que aparece la palabra: "<<endl;
+                cout<<"Líneas en las que aparece la palabra: "<<endl;
                 for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
                     listaLineas->goToPos(listaApariciones->getElement());
                     cout<<listaLineas->getElement()<<endl;
@@ -200,9 +199,9 @@ int main() {
             cout<<"Inserte la palabra que desea buscar: ";
             cin>>palabra;
             listaApariciones=triePrincipal->getLineNumbers(palabra);
-            cout<<"L�neas en las que aparece la palabra: "<<endl;
+            cout<<"Líneas en las que aparece la palabra: "<<endl;
             for(listaApariciones->goToStart();!listaApariciones->atEnd();listaApariciones->next()){
-                cout<<"L�nea "<<listaApariciones->getElement()<<": "<<endl;
+                cout<<"Línea "<<listaApariciones->getElement()<<": "<<endl;
                 listaLineas->goToPos(listaApariciones->getElement());
                 cout<<listaLineas->getElement()<<endl;
                 cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
@@ -274,6 +273,7 @@ int main() {
                         cout << "Palabra : " << palabra << endl;
                         cout << "Cantidad de veces que aparece: " << triePrincipal->getLineNumbersLength(palabra) << endl;
                     }
+                    delete palabrasMasUtilizadas;
                 }
             }
         }

@@ -127,3 +127,73 @@
 1653013658 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\maxheap.h
 	<stdexcept>
 
+1653019049 source:d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Trie.h"
+	<windows.h>
+	<stdio.h>
+	<sys/stat.h>
+	<cstdlib>
+	<cstdio>
+
+1652748839 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
+	"List.h"
+	<stdexcept>
+	<iostream>
+
+1647377899 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\list.h
+
+1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
+	<stdexcept>
+	<iostream>
+	<string>
+	"TrieNode.h"
+	"HeapPriorityQueue.h"
+
+1652890625 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trienode.h
+	"BSTreeDictionary.h"
+
+1653011700 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstreedictionary.h
+	"Dictionary.h"
+	"KVPair.h"
+	"BSTree.h"
+	"DLinkedList.h"
+
+1652580533 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dictionary.h
+	"List.h"
+
+1650409812 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\kvpair.h
+	<iostream>
+
+1652580533 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstree.h
+	<stdexcept>
+	"BSTNode.h"
+	"DLinkedList.h"
+	<iostream>
+
+1652352473 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\bstnode.h
+
+1650409897 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dlinkedlist.h
+	"List.h"
+	"DNode.h"
+	<stdexcept>
+	<iostream>
+
+1646949975 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dnode.h
+
+1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\heappriorityqueue.h
+	"PriorityQueue.h"
+	"MaxHeap.h"
+	"KVPair.h"
+	<stdexcept>
+
+1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\priorityqueue.h
+
+1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\maxheap.h
+	<stdexcept>
+
