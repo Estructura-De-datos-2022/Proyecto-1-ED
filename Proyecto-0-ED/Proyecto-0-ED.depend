@@ -53,7 +53,7 @@
 
 1651541816 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\dnode.h
 
-1652843696 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
+1653086020 source:c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
 	<algorithm>
 	<fstream>
@@ -64,8 +64,6 @@
 	<windows.h>
 	<stdio.h>
 	<sys/stat.h>
-	<cstdlib>
-	<cstdio>
 
 1652748912 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
 	"List.h"
@@ -74,11 +72,12 @@
 
 1651541816 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\list.h
 
-1652864387 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trie.h
+1653083900 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trie.h
 	<stdexcept>
 	<iostream>
 	<string>
 	"TrieNode.h"
+	"HeapPriorityQueue.h"
 
 1652862976 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\trienode.h
 	"BSTreeDictionary.h"
@@ -195,5 +194,16 @@
 1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\priorityqueue.h
 
 1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\maxheap.h
+	<stdexcept>
+
+1653083900 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\heappriorityqueue.h
+	"PriorityQueue.h"
+	"MaxHeap.h"
+	"KVPair.h"
+	<stdexcept>
+
+1653083900 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\priorityqueue.h
+
+1653083900 c:\users\kenda\onedrive\escritorio\estructuras de datos\proyecto-1-ed\proyecto-0-ed\include\maxheap.h
 	<stdexcept>
 

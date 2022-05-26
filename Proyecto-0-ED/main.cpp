@@ -6,6 +6,7 @@
 #include "ArrayList.h"
 #include "Trie.h"
 #include <windows.h>
+#include <ctype.h>
 //#include <locale.h>
 #include<stdio.h>
 #include<sys/stat.h>
@@ -34,65 +35,6 @@ int checkIfFileExists(const char* filename) {
     else
         return 0;
 }
-//revisa en el string si la palabra terminó, para añadirla al trie
-bool esFinDePalabra(string fila,int numeroLetra) {
-    char letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?'
-                   &&letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'&& letra!='1'
-                   && letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
-    if(numeroLetra==0) {
-        return false;
-    } else {
-        char letraAnterior=fila[numeroLetra-1];
-        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' &&
-                           letraAnterior!='-' &&letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
-                           && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
-                           && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
-                           && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9'&& letraAnterior!='0');
-        return (lastIsLetter && !isLetter);
-    }
-}
-//revisa que la palabra del archivo que sigue es el inicio de una palabra
-bool esPrimerLetra(string fila,int numeroLetra) {
-    char letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-                   letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'
-                   && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
-    if(numeroLetra==0) {
-        if(isLetter) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        char letraAnterior=fila[numeroLetra-1];
-        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-                           letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'&& letraAnterior!='0'
-                           && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
-                           && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
-                           && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9');
-        return (!lastIsLetter && isLetter);
-    }
-}
-//revisa si la siguiente letra del archivo es parte de la misma plabra
-bool esLetraIntermedia(string fila,int numeroLetra) {
-    char letra=fila[numeroLetra];
-    bool isLetter=(letra!=' '&& letra!=',' && letra!='_' && letra!=';' && letra!='.' && letra!='-' && letra!='!' && letra!='¡' && letra!='?' &&
-                   letra!='¿' && letra!=':'&& letra!='('&& letra!=')'&& letra!='"'&& letra!='\''&& letra!='»'&& letra!='«'&& letra!='0'
-                   && letra!='1'&& letra!='2'&& letra!='3'&& letra!='4'&& letra!='5'&& letra!='6'&& letra!='7'&& letra!='8'&& letra!='9');
-    if(numeroLetra==0) {
-        return false;
-    } else {
-        char letraAnterior=fila[numeroLetra-1];
-        bool lastIsLetter=(letraAnterior!=' '&& letraAnterior!=',' && letraAnterior!='_' && letraAnterior!=';' && letraAnterior!='.' && letraAnterior!='-' &&
-                           letraAnterior!='!' && letraAnterior!='¡' && letraAnterior!='?' && letraAnterior!='¿' && letraAnterior!=':'
-                           && letraAnterior!='('&& letraAnterior!=')'&& letraAnterior!='"'&& letraAnterior!='\''&& letraAnterior!='»'&& letraAnterior!='«'
-                           && letraAnterior!='1'&& letraAnterior!='2'&& letraAnterior!='3'&& letraAnterior!='4'&& letraAnterior!='5'&& letraAnterior!='6'
-                           && letraAnterior!='7'&& letraAnterior!='8'&& letraAnterior!='9'&& letraAnterior!='0');
-        return (isLetter && lastIsLetter);
-    }
-}
-
 int main() {
     //Configuración idioma español y agregado de tildes
     setlocale(LC_ALL,"spanish");
@@ -131,8 +73,15 @@ int main() {
     cin>>archivoPrincipal;
     cout<<"Leyendo archivo..."<<endl;
     //Uso de método para identificar si un archivo existe, en este caso se valida al ser una entrada del usuario
-    if(!checkIfFileExists(archivoPrincipal.c_str())) {
-        throw runtime_error("Error: Archivo no se encuentra.");
+    try {
+        if(checkIfFileExists(archivoPrincipal.c_str()))
+            cout<<"El archivo ingresado existe y se abrio satisfactoriamente."<<endl;
+        else
+            throw runtime_error("Error: Archivo no se encuentra.");
+    }
+    catch (const runtime_error& error){
+        cout<<"Error: El archivo ingresado no se encuentra."<<endl;
+        return 0;
     }
     ifstream archivoListaLineas(archivoPrincipal.c_str());
     string lineaArchivoPrincipal;
@@ -143,15 +92,15 @@ int main() {
         string currentWord="";
         for(unsigned int i=0; i<lineaArchivoPrincipal.size(); i++) {
             // si el anterior char no es una letra pero este s�
-            if (esPrimerLetra(lineaArchivoPrincipal,i)) {
+            if (!isalpha(lineaArchivoPrincipal[i-1]) && isalpha(lineaArchivoPrincipal[i])) {
                 currentWord=currentWord+lineaArchivoPrincipal[i];
             }
             // si el anterior char es una letra y este tambi�n
-            else if(esLetraIntermedia(lineaArchivoPrincipal,i)) {
+            else if(isalpha(lineaArchivoPrincipal[i-1]) && isalpha(lineaArchivoPrincipal[i])) {
                 currentWord=currentWord+lineaArchivoPrincipal[i];
             }
             // si el anterior char es una letra pero este no
-            else if(esFinDePalabra(lineaArchivoPrincipal,i)) {
+            else if(isalpha(lineaArchivoPrincipal[i-1]) && !isalpha(lineaArchivoPrincipal[i])) {
                 if(!ignorar->containsWord(currentWord))
                     triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
                 currentWord="";
