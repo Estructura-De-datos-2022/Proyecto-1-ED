@@ -56,7 +56,7 @@ int main() {
     SetConsoleOutputCP(1252);
 
     //Declaraci�n de varaiables en memoria
-
+    string archivoIgnorar = "ignorar.txt";
     Trie* triePrincipal=new Trie();
     List<string>* listaLineas= new ArrayList<string>(100000);
 
@@ -206,40 +206,41 @@ int main() {
                     ofstream archivoAIgnorar;
                     archivoAIgnorar.open(archivoIgnorar,ios::app);
                     archivoAIgnorar<<endl<<palabra;
-                    ignorar->insert(palabra,numeroLineaIgnorar);
+                    //ignorar->insert(palabra,numeroLineaIgnorar);
                     archivoAIgnorar.close();
                     cout<<"Palabra agregada a la lista de palabras a ignorar."<<endl;
-                    numeroLineaIgnorar++;
+                    //numeroLineaIgnorar++;
                 }
                 if(eleccion2==2) {
                     //elimina de la lista de palabras a ignorar la palabra que diga el usuario
                     string palabra;
                     cout<<"Inserte la palabra que desea borrar de la lista de palabras a ignorar: ";
                     cin>>palabra;
-                    ignorar->remove(palabra);
-                    List<string> * palabras = ignorar->getMatches("");
+                    //ignorar->remove(palabra);
+                    //List<string> * palabras = ignorar->getMatches("");
                     ofstream archivoAIgnorar;
                     archivoAIgnorar.open(archivoIgnorar,ios::out);
-                    for(palabras->goToStart(); !palabras->atEnd(); palabras->next()) {
-                        archivoAIgnorar<<endl<<palabras->getElement();
-                    }
+                    //for(palabras->goToStart(); !palabras->atEnd(); palabras->next()) {
+                        //archivoAIgnorar<<endl<<palabras->getElement();
+                    //}
                     archivoAIgnorar.close();
                     cout<<"Palabra borrada de la lista de palabras a ignorar."<<endl;
-                    numeroLineaIgnorar--;
+                    //numeroLineaIgnorar--;
                 }
                 if(eleccion2==3) {
 
                     //Generación de estructura Trie para cargar los datos de las palabras por ignorar
                     Trie *ignorar=new Trie();
-                    string archivoIgnorar = "ignorar.txt";
+
                     ifstream archivoIgn(archivoIgnorar.c_str());
                     string lineaIgn;
                     //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
                     int numeroLineaIgnorar=0;
                     while (getline(archivoIgn, lineaIgn)) {
                         ignorar->insert(lineaIgn,numeroLineaIgnorar);
-                    numeroLineaIgnorar++;
-    }
+                        numeroLineaIgnorar++;
+                    }
+                    delete ignorar;
                     //muestra el top de palabras mas utilizadas que desee el usuario
                     int top;
                     HeapPriorityQueue<string>* palabrasMasUtilizadas;
@@ -259,7 +260,7 @@ int main() {
     }
 
 //--------------------------------------------------------------------------------------------
-    delete ignorar;
+
     delete triePrincipal;
     delete listaLineas;
     return 0;
