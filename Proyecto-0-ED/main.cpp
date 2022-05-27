@@ -6,7 +6,6 @@
 #include "ArrayList.h"
 #include "Trie.h"
 #include <windows.h>
-#include <ctype.h>
 //#include <locale.h>
 #include<stdio.h>
 #include<sys/stat.h>
@@ -35,6 +34,21 @@ int checkIfFileExists(const char* filename) {
     else
         return 0;
 }
+//revisa en el string si la palabra terminó, para añadirla al trie
+bool esFinDePalabra(string fila,int numeroLetra) {
+    return (isalpha(fila[numeroLetra-1]) && !isalpha(fila[numeroLetra]));
+
+}
+//revisa que la palabra del archivo que sigue es el inicio de una palabra
+bool esPrimerLetra(string fila,int numeroLetra) {
+    return (!isalpha(fila[numeroLetra-1]) && isalpha(fila[numeroLetra]));
+}
+//revisa si la siguiente letra del archivo es parte de la misma plabra
+bool esLetraIntermedia(string fila,int numeroLetra) {
+    return (isalpha(fila[numeroLetra-1]) && isalpha(fila[numeroLetra]));
+
+}
+
 int main() {
     //Configuración idioma español y agregado de tildes
     setlocale(LC_ALL,"spanish");
@@ -73,16 +87,17 @@ int main() {
     cin>>archivoPrincipal;
     cout<<"Leyendo archivo..."<<endl;
     //Uso de método para identificar si un archivo existe, en este caso se valida al ser una entrada del usuario
-    try {
-        if(checkIfFileExists(archivoPrincipal.c_str()))
-            cout<<"El archivo ingresado existe y se abrio satisfactoriamente."<<endl;
-        else
+    try{
+        if(!checkIfFileExists(archivoPrincipal.c_str())) {
             throw runtime_error("Error: Archivo no se encuentra.");
+        }
+        cout<<"El archivo ingresado existe y se leera en breve..."<<endl;
     }
     catch (const runtime_error& error){
-        cout<<"Error: El archivo ingresado no se encuentra."<<endl;
+        cout<<"Archivo inválido."<<endl;
         return 0;
     }
+
     ifstream archivoListaLineas(archivoPrincipal.c_str());
     string lineaArchivoPrincipal;
     int numeroLineaArchivoPrincipal=0;
@@ -92,15 +107,15 @@ int main() {
         string currentWord="";
         for(unsigned int i=0; i<lineaArchivoPrincipal.size(); i++) {
             // si el anterior char no es una letra pero este s�
-            if (!isalpha(lineaArchivoPrincipal[i-1]) && isalpha(lineaArchivoPrincipal[i])) {
+            if (esPrimerLetra(lineaArchivoPrincipal,i)) {
                 currentWord=currentWord+lineaArchivoPrincipal[i];
             }
             // si el anterior char es una letra y este tambi�n
-            else if(isalpha(lineaArchivoPrincipal[i-1]) && isalpha(lineaArchivoPrincipal[i])) {
+            else if(esLetraIntermedia(lineaArchivoPrincipal,i)) {
                 currentWord=currentWord+lineaArchivoPrincipal[i];
             }
             // si el anterior char es una letra pero este no
-            else if(isalpha(lineaArchivoPrincipal[i-1]) && !isalpha(lineaArchivoPrincipal[i])) {
+            else if(esFinDePalabra(lineaArchivoPrincipal,i)) {
                 if(!ignorar->containsWord(currentWord))
                     triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
                 currentWord="";
