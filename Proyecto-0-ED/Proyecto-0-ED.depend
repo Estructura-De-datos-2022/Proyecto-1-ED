@@ -126,7 +126,7 @@
 1653013658 c:\users\hp\desktop\estructuras de datos\proyectos\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\maxheap.h
 	<stdexcept>
 
-1653020643 source:d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
+1653620282 source:d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\main.cpp
 	<iostream>
 	<algorithm>
 	<fstream>
@@ -137,17 +137,15 @@
 	<windows.h>
 	<stdio.h>
 	<sys/stat.h>
-	<cstdlib>
-	<cstdio>
 
-1652748839 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
+1653086099 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\arraylist.h
 	"List.h"
 	<stdexcept>
 	<iostream>
 
 1647377899 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\list.h
 
-1653016066 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
+1653621651 d:\tec universidad\documentos\tercer semestre\estructura de datos\proyecto\proyecto 1\proyecto-1-ed\proyecto-0-ed\include\trie.h
 	<stdexcept>
 	<iostream>
 	<string>

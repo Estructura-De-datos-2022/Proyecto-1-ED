@@ -12,6 +12,13 @@ using std::cout;
 using std::endl;
 using std::string;
 
+/**
+  * class Trie definida con un TrieNode
+  * y los metodos necesario para su implementacion
+  * autor: @author Andy, Kevin, Ian
+  * version: 1.5
+  */
+
 class Trie{
 private:
     void operator =(const Trie &other) {}
@@ -19,6 +26,11 @@ private:
 
     TrieNode* root;
 
+    /*
+     * funciones auxiliar que ayuda a limpiar el trie
+     * resive como parametro un TrieNode
+     * recorre el trie y elimina los nodos
+     */
     void clearAux(TrieNode *current){
         List<TrieNode*>* pointers = current->getChildrenPointers();
         pointers->goToStart();
@@ -28,6 +40,11 @@ private:
         }
         delete current;
     }
+
+    /*
+     * funcion auxiliar que ayuda a buscar un prefijo en el trie 
+     *
+     */
     void getMatchesAux(TrieNode *current, string prefix, List<string> *words) {
         if (current->isFinal)
             words->append(prefix);
@@ -40,6 +57,11 @@ private:
         }
         delete children;
     }
+
+    /*
+     * funcion auxiliar que ayuda a buscar un prefijo en el trie
+     *
+     */
     void getMatchesAux2(TrieNode *current, string prefix, HeapPriorityQueue<string> *words) {
         if (current->isFinal){
             ArrayList<int>* numero = current->getLineNumbers();
@@ -54,6 +76,11 @@ private:
         }
         delete children;
     }
+
+    /*
+     * funcion auxiliar que ayuda a buscar las palabras que tiene una cantidad de letras
+     * que fue solicitado por el usuario
+     */
     void getWordsWithThisLengthAux(TrieNode *current, string prefix, List<string> *words, int length){
         if(current->isFinal){
             if(current->letterNumber==length){
@@ -89,8 +116,8 @@ public:
                 if (!current->contains(word[i]))
                     current->add(word[i]);
                 current = current->getChild(word[i]);
-                current->letterNumber=i;
             }
+            current->letterNumber=word.size()-1;
             current->prefixCount++;
             current->isFinal = true;
             current->lineNumbers->append(fileLine);

@@ -59,8 +59,16 @@ int main() {
     string archivoIgnorar = "ignorar.txt";
     Trie* triePrincipal=new Trie();
     List<string>* listaLineas= new ArrayList<string>(100000);
-
-
+    //Generación de estructura Trie para cargar los datos de las palabras por ignorar
+    Trie *ignorar=new Trie();
+    ifstream archivoIgn(archivoIgnorar.c_str());
+    string lineaIgn;
+    //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
+    int numeroLineaIgnorar=0;
+    while (getline(archivoIgn, lineaIgn)) {
+        ignorar->insert(lineaIgn,numeroLineaIgnorar);
+        numeroLineaIgnorar++;
+    }
 
 
     //Cout de interfaz de texto (interacci�n con el usuario)
@@ -106,7 +114,9 @@ int main() {
             }
             // si el anterior char es una letra pero este no
             else if(esFinDePalabra(lineaArchivoPrincipal,i)) {
-                triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
+                if(currentWord.size()>1) {
+                    triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
+                }
                 currentWord="";
             }
         }
@@ -206,41 +216,28 @@ int main() {
                     ofstream archivoAIgnorar;
                     archivoAIgnorar.open(archivoIgnorar,ios::app);
                     archivoAIgnorar<<endl<<palabra;
-                    //ignorar->insert(palabra,numeroLineaIgnorar);
+                    ignorar->insert(palabra,numeroLineaIgnorar);
                     archivoAIgnorar.close();
                     cout<<"Palabra agregada a la lista de palabras a ignorar."<<endl;
-                    //numeroLineaIgnorar++;
+                    numeroLineaIgnorar++;
                 }
                 if(eleccion2==2) {
                     //elimina de la lista de palabras a ignorar la palabra que diga el usuario
                     string palabra;
                     cout<<"Inserte la palabra que desea borrar de la lista de palabras a ignorar: ";
                     cin>>palabra;
-                    //ignorar->remove(palabra);
-                    //List<string> * palabras = ignorar->getMatches("");
+                    ignorar->remove(palabra);
+                    List<string> * palabras = ignorar->getMatches("");
                     ofstream archivoAIgnorar;
                     archivoAIgnorar.open(archivoIgnorar,ios::out);
-                    //for(palabras->goToStart(); !palabras->atEnd(); palabras->next()) {
-                        //archivoAIgnorar<<endl<<palabras->getElement();
-                    //}
+                    for(palabras->goToStart(); !palabras->atEnd(); palabras->next()) {
+                        archivoAIgnorar<<palabras->getElement()<<endl;
+                    }
                     archivoAIgnorar.close();
                     cout<<"Palabra borrada de la lista de palabras a ignorar."<<endl;
-                    //numeroLineaIgnorar--;
+                    numeroLineaIgnorar--;
                 }
                 if(eleccion2==3) {
-
-                    //Generación de estructura Trie para cargar los datos de las palabras por ignorar
-                    Trie *ignorar=new Trie();
-
-                    ifstream archivoIgn(archivoIgnorar.c_str());
-                    string lineaIgn;
-                    //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
-                    int numeroLineaIgnorar=0;
-                    while (getline(archivoIgn, lineaIgn)) {
-                        ignorar->insert(lineaIgn,numeroLineaIgnorar);
-                        numeroLineaIgnorar++;
-                    }
-                    delete ignorar;
                     //muestra el top de palabras mas utilizadas que desee el usuario
                     int top;
                     HeapPriorityQueue<string>* palabrasMasUtilizadas;
@@ -250,8 +247,16 @@ int main() {
                     cout << palabrasMasUtilizadas->getSize() << endl;
                     for (int i = 0; i< top; i++) {
                         string palabra = palabrasMasUtilizadas->removeMin();
-                        cout << "Palabra : " << palabra << endl;
-                        cout << "Cantidad de veces que aparece: " << triePrincipal->getLineNumbersLength(palabra) << endl;
+                        if (palabra == "") {
+
+                        }
+                        if (!ignorar->containsWord(palabra)) {
+                            cout << "Palabra : " << palabra << endl;
+                            cout << "Cantidad de veces que aparece: " << triePrincipal->getLineNumbersLength(palabra) << endl;
+                        }
+                        else {
+                            i--;
+                        }
                     }
                     delete palabrasMasUtilizadas;
                 }
@@ -260,7 +265,7 @@ int main() {
     }
 
 //--------------------------------------------------------------------------------------------
-
+    delete ignorar;
     delete triePrincipal;
     delete listaLineas;
     return 0;

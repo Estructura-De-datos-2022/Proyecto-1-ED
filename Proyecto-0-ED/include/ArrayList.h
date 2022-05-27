@@ -124,7 +124,6 @@ class ArrayList : public List<E>{
         int getSize(){
             return size;
         }
-
         void print(){
             int oldPos=pos;
             cout<<"[ ";
@@ -186,10 +185,6 @@ class ArrayList : public List<E>{
             return true;
 
         }
-
-
-
-
 
 
 };
