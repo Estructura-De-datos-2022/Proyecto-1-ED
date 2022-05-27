@@ -56,22 +56,12 @@ int main() {
     SetConsoleOutputCP(1252);
 
     //Declaraci�n de varaiables en memoria
-    Trie *ignorar=new Trie();
+
     Trie* triePrincipal=new Trie();
     List<string>* listaLineas= new ArrayList<string>(100000);
 
 
-    //Generación de estructura Trie para cargar los datos de las palabras por ignorar
 
-    string archivoIgnorar = "ignorar.txt";
-    ifstream archivoIgn(archivoIgnorar.c_str());
-    string lineaIgn;
-    //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
-    int numeroLineaIgnorar=0;
-    while (getline(archivoIgn, lineaIgn)) {
-        ignorar->insert(lineaIgn,numeroLineaIgnorar);
-        numeroLineaIgnorar++;
-    }
 
     //Cout de interfaz de texto (interacci�n con el usuario)
     cout<<"Hola!!"<<endl;
@@ -116,8 +106,7 @@ int main() {
             }
             // si el anterior char es una letra pero este no
             else if(esFinDePalabra(lineaArchivoPrincipal,i)) {
-                if(!ignorar->containsWord(currentWord))
-                    triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
+                triePrincipal->insert(currentWord,numeroLineaArchivoPrincipal);
                 currentWord="";
             }
         }
@@ -239,6 +228,18 @@ int main() {
                     numeroLineaIgnorar--;
                 }
                 if(eleccion2==3) {
+
+                    //Generación de estructura Trie para cargar los datos de las palabras por ignorar
+                    Trie *ignorar=new Trie();
+                    string archivoIgnorar = "ignorar.txt";
+                    ifstream archivoIgn(archivoIgnorar.c_str());
+                    string lineaIgn;
+                    //Obtener línea de archivo, y almacenar contenido en "lineaIgn"
+                    int numeroLineaIgnorar=0;
+                    while (getline(archivoIgn, lineaIgn)) {
+                        ignorar->insert(lineaIgn,numeroLineaIgnorar);
+                    numeroLineaIgnorar++;
+    }
                     //muestra el top de palabras mas utilizadas que desee el usuario
                     int top;
                     HeapPriorityQueue<string>* palabrasMasUtilizadas;
